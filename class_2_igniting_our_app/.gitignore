@@ -1,0 +1,12 @@
+# anything which can be auto-generated can be put inisde the gitignore file
+# anything which we can generate on our server can be put inside gitignore file
+# for ex: when we write npm install, through which we can generate node modules
+# also like in the case of dist folder, we can genearte it using parcel commands
+# and 'parcel-cache' is automatically created by parcel for caching 
+
+# parcel (bundler) generates cache files
+.parcel-cache
+
+# node artifact files
+dist
+node_modules
