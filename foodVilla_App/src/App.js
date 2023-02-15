@@ -1,5 +1,8 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
+import HeaderComponent from "./components/Header";    //default import
+import Body from "./components/Body";
+import Footer from "./components/Footer";
 
 /*
     Header
@@ -19,16 +22,7 @@ import ReactDOM from "react-dom/client";
         - Copyright
 */
 
-const Title = () => (
-    <a href="/">
-        <img
-            className="logo"
-            alt="logo"
-            src="https://content.jdmagicbox.com/comp/rayagada/r1/9999p6856.6856.220317231853.s9r1/catalogue/the-food-villa-family-restaurant-gunupur-gunupur-rayagada-restaurants-zu4jzj8a1p.jpg"
-        />
-    </a>
-    
-);
+
 
 // Config driven UI is used in real world applications
 // Who is driving that UI - Backend and APIs
@@ -767,53 +761,9 @@ const restrauntList = [
     ];
 
 
-//object destructuring in JS
-const RestaurantCard = ({cloudinaryImageId, name, cuisines, lastMileTravelString}) => {
 
-    return(
-        <div className="card">
-            <img src={"https://res.cloudinary.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_508,h_320,c_fill/" + 
-            cloudinaryImageId}/>
-            <h2>{name}</h2>
-            <h3>{cuisines.join(", ")}</h3>
-            <h4>{lastMileTravelString} Distance</h4>
-        </div>
-    );
-};
-    
-const HeaderComponent = () => {
-    return (
-        <div className="header">
-            <Title/>
-            <div className="nav-items">
-                <ul>
-                    <li>Home</li>
-                    <li>About Us</li>
-                    <li>Contact</li>
-                    <li>Cart</li>
-                </ul>
-            </div>
-            
-        </div>
-    )
-};
 
-//using keys(best practice) to give unique identification to the component
-const Body = () =>{
-    return(
-        <div className="restaurant-list">
-            {restrauntList.map((restaurant) => {
-                return <RestaurantCard {...restaurant.data} key={restaurant.data.id}/>;
-            })}
-        </div>
-    );
-};
 
-const Footer = () =>{
-    return(
-        <h1>Footer</h1>
-    );
-};
 
 const AppLayout = () => {
     return (
