@@ -1,3 +1,5 @@
+import { useState } from "react";   
+
 //we don't need to export title as it is being used in the HeaderComponent
 const Title = () => (
     <a href="/">
@@ -11,6 +13,8 @@ const Title = () => (
 );
 
 const HeaderComponent = () => {
+    const[isLoggedin, setIsLoggedin] = useState(false);
+
     return (
         <div className="header">
             <Title/>
@@ -23,6 +27,8 @@ const HeaderComponent = () => {
                 </ul>
             </div>
             
+            {isLoggedin?<button onClick={() => setIsLoggedin(false)}>Logout</button>
+            :<button onClick={() => setIsLoggedin(true)}>LogIn</button>}
         </div>
     )
 };
