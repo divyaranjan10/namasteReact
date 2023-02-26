@@ -1,4 +1,6 @@
-import { useState } from "react";   
+import { useState } from "react"; 
+import { Link } from "react-router-dom";
+import Logo from "../assets/img/foodVilla.jpg";  
 
 //we don't need to export title as it is being used in the HeaderComponent
 const Title = () => (
@@ -6,13 +8,13 @@ const Title = () => (
         <img
             className="logo"
             alt="logo"
-            src="https://content.jdmagicbox.com/comp/rayagada/r1/9999p6856.6856.220317231853.s9r1/catalogue/the-food-villa-family-restaurant-gunupur-gunupur-rayagada-restaurants-zu4jzj8a1p.jpg"
+            src= {Logo}
         />
     </a>
     
 );
 
-const HeaderComponent = () => {
+const Header = () => {
     const[isLoggedin, setIsLoggedin] = useState(false);
 
     return (
@@ -20,9 +22,9 @@ const HeaderComponent = () => {
             <Title/>
             <div className="nav-items">
                 <ul>
-                    <li>Home</li>
-                    <li>About Us</li>
-                    <li>Contact</li>
+                    <li><Link to="/">Home</Link></li>
+                    <li><Link to="/about">About Us</Link></li>
+                    <li><Link to="/contact">Contact</Link></li>
                     <li>Cart</li>
                 </ul>
             </div>
@@ -37,4 +39,4 @@ const HeaderComponent = () => {
 // there are two ways of exporting
 // 1. export default title -> it means that it will export this Title component by default
 // 2. named export 
-export default HeaderComponent;
+export default Header;
