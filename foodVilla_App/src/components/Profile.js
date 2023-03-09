@@ -1,7 +1,14 @@
-const Profile = () => {
+import { useState } from "react";
+
+const Profile = (props) => {
+    const[count, setCount] = useState(0);
+
     return(
         <div>
-            <h1>This is the Profile Section.</h1>
+            <h1>This is the Profile Functional Section.</h1>
+            <h2>Name: {props.name}</h2>
+            <h3>{count}</h3>
+            <button onClick={()=>setCount(count+1)}>Count</button>
         </div>
     );
 };
