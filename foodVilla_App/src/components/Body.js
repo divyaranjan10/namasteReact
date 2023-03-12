@@ -3,29 +3,15 @@ import RestaurantCard from "./RestaurantCard";
 import { useState, useEffect } from "react";
 import Shimmer from "./Shimmer";
 import { Link } from "react-router-dom";
+import { filterData } from "../utils/helper";
+import useOnline from "../utils/useOnline";
 
-function filterData(searchText, restaurants) {
-    const filterData = restaurants.filter((restaurant) =>
-        restaurant?.data?.name?.toLowerCase()?.includes(searchText.toLowerCase())
-    );
-    
-    return filterData;
-}
-
-//using keys(best practice) to give unique identification to the component
 const Body = () =>{
-    //searchText is a local state variable
     const [allRestaurants, setAllRestaurants] = useState([]);
     const [filteredRestaurants, setFilteredRestaurants] = useState([]);
-    const [searchText, setSearchText] = useState("");    //to create state variables
-
-    //useEffect is a hook (also a function) in React that takes a callback function
-    //the callback function will only be called when the useEffect wants to call it 
-    //so when useEffect will be called into action? -> every time the component gets rendered, the useEffect will get into action 
-    // at last
+    const [searchText, setSearchText] = useState("");    
 
     useEffect(() => {
-        //will do fetching here...
         getRestaurants();
     }, []);
 
@@ -36,16 +22,17 @@ const Body = () =>{
         setFilteredRestaurants(json?.data?.cards[2]?.data?.data?.cards);
     }
 
+    const isOnline = useOnline();
+    if(!isOnline){
+        return <h1>Offline, please check your internet connection.</h1>
+    }
+
     //conditional rendering
     // if restaurant is empty => shimmer UI
     // if not empty => Actual UI
     
     // not render component (Early return)
     if(!allRestaurants) return null;
-
-    // if(filteredRestaurants.length == 0){
-    //     return <h1>Oops! No Restaurant Found</h1>
-    // }
 
     return (allRestaurants.length == 0)?<Shimmer/>:(
         <>
@@ -62,9 +49,7 @@ const Body = () =>{
             <button 
                 className="search-btn"
                 onClick={() => {
-                    //filter on click 
                     const data = filterData(searchText, allRestaurants);
-                    //update the state - restaurants
                     setFilteredRestaurants(data);
                 }}
                 >
