@@ -2,11 +2,10 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import Logo from "../assets/img/foodVilla.jpg";  
 
-//we don't need to export title as it is being used in the HeaderComponent
 const Title = () => (
     <a href="/">
         <img
-            className="logo"
+            className="h-28 p-2"
             alt="logo"
             src= {Logo}
         />
@@ -18,15 +17,15 @@ const Header = () => {
     const[isLoggedin, setIsLoggedin] = useState(false);
 
     return (
-        <div className="header">
+        <div className="flex justify-between bg-pink-50 shadow-lg">
             <Title/>
             <div className="nav-items">
-                <ul>
-                    <li><Link to="/">Home</Link></li>
-                    <li><Link to="/about">About Us</Link></li>
-                    <li><Link to="/contact">Contact</Link></li>
-                    <li>Cart</li>
-                    <li><Link to="/instamart">Instamart</Link></li>
+                <ul className="flex py-10">
+                    <li className="px-2"><Link to="/">Home</Link></li>
+                    <li className="px-2"><Link to="/about">About Us</Link></li>
+                    <li className="px-2"><Link to="/contact">Contact</Link></li>
+                    <li className="px-2">Cart</li>
+                    <li className="px-2"><Link to="/instamart">Instamart</Link></li>
                 </ul>
             </div>
             
@@ -36,8 +35,4 @@ const Header = () => {
     )
 };
 
-// exporting means that I am exporting this 'title' so that anyone can uses it
-// there are two ways of exporting
-// 1. export default title -> it means that it will export this Title component by default
-// 2. named export 
 export default Header;
