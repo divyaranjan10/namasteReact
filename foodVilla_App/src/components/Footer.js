@@ -1,6 +1,11 @@
+import { useContext } from "react";
+import UserContext from "../utils/UserContext";
+
 const Footer = () =>{
+    const {user, setUser} = useContext(UserContext);
+
     return(
-        <h1>Footer</h1>
+        <h4 className="p-10  bg-pink-50 shadow-lg ">This Project is developed by <b>{user.name}</b> - <b>{user.email}</b></h4>
     );
 };
 

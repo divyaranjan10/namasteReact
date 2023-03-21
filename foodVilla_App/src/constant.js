@@ -1,6 +1,6 @@
 export const img_cdn_link = "https://res.cloudinary.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_508,h_320,c_fill/";
 
-export const FETCH_MENU_URL = "https://www.swiggy.com/dapi/menu/v4/full?lat=12.9351929&lng=77.62448069999999&menuId=";
+export const FETCH_MENU_URL = "https://www.swiggy.com/dapi/menu/pl?page-type=REGULAR_MENU&complete-menu=true&lat=12.9351929&lng=77.62448069999999&restaurantId=";
 
 export const restrauntList = [
   
@@ -737,3 +737,8 @@ export const restrauntList = [
 
 // So, basically we have made this file to put hard coded data here or you can say constant things that we may need later in our code 
 // and we can make a central place let's say 'constant.js' so whenever we need we can call them.
+
+//https://www.swiggy.com/dapi/menu/pl?page-type=REGULAR_MENU&complete-menu=true&lat=12.9351929&lng=77.62448069999999&restaurantId=
+
+//old
+//https://www.swiggy.com/dapi/menu/v4/full?lat=12.9351929&lng=77.62448069999999&menuId=
